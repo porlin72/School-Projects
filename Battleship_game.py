@@ -20,8 +20,9 @@ def random_col(board):
 
 ship_row = random_row(board)
 ship_col = random_col(board)
-print ship_row
-print ship_col
+#print ship_row
+#print ship_col
+print "The length of the board is %dx%d" % (len(board), len(board))
 
 # Everything from here on should go in your for loop!
 # Be sure to indent four spaces!
@@ -30,14 +31,14 @@ for turn in range(4):
     guess_row = int(raw_input("Guess Row:"))
     guess_col = int(raw_input("Guess Col:"))
     
-    if guess_row == ship_row and guess_col == ship_col:
+    if guess_row == (ship_row+1) and guess_col == (ship_col+1):
         print "Congratulations! You sunk my battleship!"
-        board[guess_row][guess_col] = "X"
+        board[guess_row-1][guess_col-1] = "X"
         break
     else:
-        if guess_row < len(board) and guess_col < len(board):
+        if guess_row <= len(board) and guess_col <= len(board):
             print "You missed my battleship!"
-            board[guess_row][guess_col] = "X"
+            board[guess_row-1][guess_col-1] = "X"
         else:
             print "Oops, that's not even in the ocean."
     
